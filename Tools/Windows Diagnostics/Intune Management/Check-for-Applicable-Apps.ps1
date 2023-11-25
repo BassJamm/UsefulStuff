@@ -1,5 +1,5 @@
 <# Script checks the intune Win logs for deployed applications times. #>
-$logFileContent = Get-Content -Path C:\temp\IntuneLogs\moj-intunemgmtlogs.txt
+$logFileContent = Get-Content (Get-ChildItem -Path C:\programdata\Microsoft\IntuneManagementExtension\Logs\ -Filter 'IntuneManagementExtension*.log')
 
 ###### Identify each row. ######
 $filteredLogs = $logFileContent | Where-Object { $_ -match "<!\[LOG\[Get\spolicies\s=\s(.+)>" }
